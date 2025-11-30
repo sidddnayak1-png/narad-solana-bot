@@ -89,6 +89,6 @@ def main():
     print("NARAD Bot: Starting Polling Loop...")
     application.run_polling()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
         

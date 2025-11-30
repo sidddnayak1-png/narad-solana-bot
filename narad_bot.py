@@ -2,10 +2,11 @@ from telegram.ext import Application, CommandHandler
 import asyncio
 from datetime import datetime
 import requests
+import os # <--- NEW: Import the OS library to access environment variables
 
-# --- CONFIGURATION (Your Verified Credentials) ---
-BOT_TOKEN = '8228662843:AAHOs9UYHZwvI7YcOWTkj4HayJEXWL7RO6I' 
-ALERT_CHAT_ID = '6949742820' 
+# --- CONFIGURATION (Fetching from Render's Environment Variables) ---
+BOT_TOKEN = os.environ.get('BOT_TOKEN') 
+ALERT_CHAT_ID = os.environ.get('ALERT_CHAT_ID') 
 
 # --- NĀRAD'S WORK (Now with Live API Calls) ---
 
@@ -55,7 +56,7 @@ def get_instant_solana_update():
         f"*Congestion:* NONE (Basic Status OK)"
     )
 
-# --- COMMAND HANDLERS (Matches your requirements) ---
+# --- COMMAND HANDLERS ---
 async def naradnews_command(update, context):
     """/naradnews → latest verified news"""
     response = get_latest_verified_news()
@@ -90,3 +91,4 @@ def main():
 
 if _name_ == "_main_":
     main()
+        
